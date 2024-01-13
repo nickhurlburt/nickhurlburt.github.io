@@ -21,4 +21,4 @@ What is a story about this?
 
 What does this mean about what I enjoy in a role?
 
-I enjoy roles where I can exercise this systems thinking behavior while also leading people toward a goal while helping them grow. Exercising that behavior frequently means having enough information and access to be able to assemble my own understanding.
+I enjoy roles where I can exercise this systems thinking behavior while also leading people toward a goal while helping them grow. Exercising that behavior frequently means having enough information and access to be able to assemble my own understanding. Additionally, I enjoy working on something that helps to solve important problems in the world, while growing a greater understanding of the causes and possible solutions.
