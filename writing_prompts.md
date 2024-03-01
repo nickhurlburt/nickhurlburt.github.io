@@ -54,6 +54,8 @@ Prompts that emerged.
 - set up the operating system
 - empower and let people fail in small ways
 - pay attention to your PMs - they know when delivery isn't happening
+- write things down; set written expectations
+- sample. watch for trends.
 
 
 
