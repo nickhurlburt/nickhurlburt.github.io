@@ -1,0 +1,8 @@
+Originally posted in LinkedIn on March 19, 2024
+
+Dee Luo and I recently had the opportunity to speak to 1,000 members of Okta’s product teams about Tech Matters journey as a tech nonprofit. We covered aspects of innovation within the social impact realm, including how businesses can better think about a broader set of users.
+
+Key takeaways that are relevant to a broader audience:
+- Nonprofits often have limited resources, especially for IT and security. This makes the idea of convention over configuration especially important. If your product ships with the most secure settings as the default, it can make a big difference to organizations that have limited capacity to put security best practices in place themselves.
+- While making those best practices the default is beneficial, it’s still important to understand your users and adapt to their needs, especially when building for users who may not have the same level of tech-familiarity as product builders. For example, while multi-factor authentication is a familiar best practice in tech-forward organizations, it may be a prohibitive barrier for someone unfamiliar with those tools. Meet users where they are to make technology accessible and effective for everyone.
+- Innovation in the nonprofit space may look different than what we’d call innovation elsewhere. Rather than integrating the latest cutting-edge idea, it may look like adapting these technologies to previously-unexplored use cases. For example, our Aselo product takes call center technology built with the typical sales and support use cases in mind, and instead applies it to the very different needs of crisis helplines.
