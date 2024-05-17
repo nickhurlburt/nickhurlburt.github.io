@@ -1,0 +1,12 @@
+- there's more to negotiate on than you think
+- how important is the entry point: e.g. vp vs front line sales
+- bigger orgs may have too much process to allow flexibility
+- do obvious things: eg, make sure team is onboard
+- you don't have to hold your cards too tight
+- talk to existing customers. learn reputation.
+- look at exit options
+- the contract is a good way to understand terms, but the main thing is the relationship. you probably won't actually lawyer up.
+- look at the full related experience: onboarding, offboarding, etc
+- be a good customer; be clear on what you want; that could mean lower support cost
+- get multiple quotes for big things
+
