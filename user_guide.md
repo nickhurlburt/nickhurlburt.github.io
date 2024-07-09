@@ -17,3 +17,5 @@ The beginnings of a user guide for me, especially for direct reports.
 
 ## Things I know I'm bad at
 * I tend toward being conflict-averse, and am reluctant to deliver feedback that could cause bad feelings. However, I recognize how important it is to share that feedback. I will try to deliver it in a prompt and constructive way.
+
+## General things about leadership I have learned
