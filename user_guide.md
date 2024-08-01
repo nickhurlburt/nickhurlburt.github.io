@@ -21,3 +21,6 @@ The beginnings of a user guide for me, especially for direct reports.
 ## General things about leadership I have learned
 * The importance of [Radical Candor](https://www.radicalcandor.com/our-approach/): being kind yet direct
 * Allegiance to reality
+* Capturing decisions and the reasons for them (and also predictions) and then reviewing them afterward to learn
+  * Decision journals, premortems, estimations followed by review
+
