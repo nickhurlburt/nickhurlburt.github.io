@@ -15,8 +15,9 @@ The beginnings of a user guide for me, especially for direct reports.
 * Audience- and context-inappropriate conversation in meetings. For example, it's fine to go into deep technical detail during a mob programming session, but inappropriate to do that in an all-team staff meeting that includes less-technical folks. The most common examples of this are being in a meeting with a large number of people and getting into detail on something that is irrelevant to many of the people present. Everyone's time is valuable. Detailed discussion is fine, but needs to be done afterward in a smaller group.
 * I expect people to pay attention to their calendars and be prompt for meetings.
 
-## Things I know I'm bad at
+## Tendencies
 * I tend toward being conflict-averse, and am reluctant to deliver feedback that could cause bad feelings. However, I recognize how important it is to share that feedback. I will try to deliver it in a prompt and constructive way.
+* When confronted with one specific problem, I tend to want to create system to deal with that whole class of problem. This is generally a good reaction, because systems that solve classes of problems are necessary. Though sometimes I need to remember to just fix the thing in front of us.
 
 ## General things about leadership I have learned
 * The importance of [Radical Candor](https://www.radicalcandor.com/our-approach/): being kind yet direct
