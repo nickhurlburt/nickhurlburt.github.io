@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Affordability Calculator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .calculator {
+      display: flex;
+      gap: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      padding: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 0.25rem;
+    }
+
+    .left label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .left input {
+      font-size: 1.5rem;
+      padding: 0.5rem 0.75rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      width: 220px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .left input:focus {
+      border-color: #4a7fa5;
+    }
+
+    .divider {
+      width: 1px;
+      background: #e0e0e0;
+      align-self: stretch;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      min-width: 220px;
+    }
+
+    .result-item {}
+
+    .result-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .result-header label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+    }
+
+    .toggle {
+      font-size: 0.7rem;
+      color: #aaa;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .result-item.expanded .toggle {
+      transform: rotate(180deg);
+    }
+
+    .result-header .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #222;
+      margin-top: 0.15rem;
+    }
+
+    .result-header .value.empty {
+      color: #bbb;
+    }
+
+    .breakdown {
+      display: none;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+      padding-left: 0.25rem;
+      border-left: 2px solid #e8e8e8;
+    }
+
+    .result-item.expanded .breakdown {
+      display: flex;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+    }
+
+    .breakdown-row .b-label {
+      font-size: 0.82rem;
+      color: #777;
+    }
+
+    .breakdown-row .b-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #444;
+    }
+    .tasks {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      padding: 1.5rem 2rem;
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .tasks h2 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.9rem;
+    }
+
+    .tasks ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tasks li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .tasks input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      accent-color: #4a7fa5;
+    }
+
+    .tasks label {
+      font-size: 1rem;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .tasks input[type="checkbox"]:checked + label {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="left">
+      <label for="price">House Price</label>
+      <input type="number" id="price" placeholder="1200000" min="0" step="10000">
+      <label for="hoa">HOA (monthly)</label>
+      <input type="number" id="hoa" placeholder="0" min="0" step="50">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="right">
+      <div class="result-item" id="oneoff-item">
+        <div class="result-header" onclick="toggle('oneoff-item')">
+          <div>
+            <label>One-off Cost</label>
+            <div class="value empty" id="oneoff">—</div>
+          </div>
+          <span class="toggle">&#9650;</span>
+        </div>
+        <div class="breakdown">
+          <div class="breakdown-row">
+            <span class="b-label">Closing Costs (5%)</span>
+            <span class="b-value" id="closing">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="b-label">Down Payment (20%)</span>
+            <span class="b-value" id="downpayment">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-item" id="monthly-item">
+        <div class="result-header" onclick="toggle('monthly-item')">
+          <div>
+            <label>Monthly Cost</label>
+            <div class="value empty" id="monthly">—</div>
+          </div>
+          <span class="toggle">&#9650;</span>
+        </div>
+        <div class="breakdown">
+          <div class="breakdown-row">
+            <span class="b-label">Mortgage (0.6%)</span>
+            <span class="b-value" id="mortgage">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="b-label">Tax (0.1%)</span>
+            <span class="b-value" id="tax">—</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="b-label">Insurance (0.1%)</span>
+            <span class="b-value" id="insurance">—</span>
+          </div>
+          <div class="breakdown-row" id="hoa-row" style="display:none">
+            <span class="b-label">HOA</span>
+            <span class="b-value" id="hoa-display">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tasks">
+    <h2>Tasks</h2>
+    <ul>
+      <!-- Add new tasks here by copying a <li> block -->
+      <li>
+        <input type="checkbox" id="task-1">
+        <label for="task-1">Define closing costs</label>
+      </li>
+      <li>
+        <input type="checkbox" id="task-2">
+        <label for="task-2">Define mortgage cost</label>
+      </li>
+      <li>
+        <input type="checkbox" id="task-3">
+        <label for="task-3">Define tax cost</label>
+      </li>
+      <li>
+        <input type="checkbox" id="task-4">
+        <label for="task-4">Define insurance cost</label>
+      </li>
+      <li>
+        <input type="checkbox" id="task-5">
+        <label for="task-5">Calculate likely budget post-July</label>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function fmt(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+
+    function toggle(id) {
+      document.getElementById(id).classList.toggle('expanded');
+    }
+
+    function calculate() {
+      const price = parseFloat(document.getElementById('price').value);
+      const hoa = parseFloat(document.getElementById('hoa').value) || 0;
+
+      const ids = ['oneoff', 'monthly', 'closing', 'downpayment', 'mortgage', 'tax', 'insurance'];
+      if (isNaN(price) || price <= 0) {
+        ids.forEach(id => {
+          const el = document.getElementById(id);
+          el.textContent = '—';
+          el.classList.add('empty');
+        });
+        document.getElementById('hoa-row').style.display = 'none';
+        return;
+      }
+
+      const values = {
+        closing:     price * 0.05,
+        downpayment: price * 0.20,
+        mortgage:    price * 0.006,
+        tax:         price * 0.001,
+        insurance:   price * 0.001,
+      };
+      values.oneoff  = values.closing + values.downpayment;
+      values.monthly = values.mortgage + values.tax + values.insurance + hoa;
+
+      Object.entries(values).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        el.textContent = fmt(val);
+        el.classList.remove('empty');
+      });
+
+      const hoaRow = document.getElementById('hoa-row');
+      if (hoa > 0) {
+        document.getElementById('hoa-display').textContent = fmt(hoa);
+        hoaRow.style.display = 'flex';
+      } else {
+        hoaRow.style.display = 'none';
+      }
+    }
+
+    document.getElementById('price').addEventListener('input', calculate);
+    document.getElementById('hoa').addEventListener('input', calculate);
+  </script>
+</body>
+</html>
