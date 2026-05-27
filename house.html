@@ -113,16 +113,17 @@
     }
 
     .breakdown {
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 0.3rem;
       margin-top: 0.5rem;
       padding-left: 0.25rem;
       border-left: 2px solid #e8e8e8;
+      visibility: hidden;
     }
 
     .result-item.expanded .breakdown {
-      display: flex;
+      visibility: visible;
     }
 
     .breakdown-row {
@@ -141,55 +142,6 @@
       font-size: 0.95rem;
       font-weight: 600;
       color: #444;
-    }
-    .tasks {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-      padding: 1.5rem 2rem;
-      width: 100%;
-      max-width: 560px;
-    }
-
-    .tasks h2 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.9rem;
-    }
-
-    .tasks ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .tasks li {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .tasks input[type="checkbox"] {
-      width: 1rem;
-      height: 1rem;
-      cursor: pointer;
-      flex-shrink: 0;
-      accent-color: #4a7fa5;
-    }
-
-    .tasks label {
-      font-size: 1rem;
-      color: #333;
-      cursor: pointer;
-    }
-
-    .tasks input[type="checkbox"]:checked + label {
-      text-decoration: line-through;
-      color: #aaa;
     }
   </style>
 </head>
@@ -255,34 +207,8 @@
     </div>
   </div>
 
-  <div class="tasks">
-    <h2>Tasks</h2>
-    <ul>
-      <!-- Add new tasks here by copying a <li> block -->
-      <li>
-        <input type="checkbox" id="task-1" checked>
-        <label for="task-1">Define closing costs</label>
-      </li>
-      <li>
-        <input type="checkbox" id="task-2">
-        <label for="task-2">Define mortgage cost</label>
-      </li>
-      <li>
-        <input type="checkbox" id="task-3" checked>
-        <label for="task-3">Define tax cost</label>
-      </li>
-      <li>
-        <input type="checkbox" id="task-4" checked>
-        <label for="task-4">Define insurance cost</label>
-      </li>
-      <li>
-        <input type="checkbox" id="task-5">
-        <label for="task-5">Calculate likely budget post-July</label>
-      </li>
-    </ul>
-  </div>
 
-  <script>
+<script>
     function fmt(n) {
       return '$' + Math.round(n).toLocaleString('en-US');
     }
