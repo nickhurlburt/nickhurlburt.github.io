@@ -235,15 +235,15 @@
         </div>
         <div class="breakdown">
           <div class="breakdown-row">
-            <span class="b-label">Mortgage (0.6%)</span>
+            <span class="b-label">Mortgage (0.616% of price − down)</span>
             <span class="b-value" id="mortgage">—</span>
           </div>
           <div class="breakdown-row">
-            <span class="b-label">Tax (0.1%)</span>
+            <span class="b-label">Tax (1.18% / 12)</span>
             <span class="b-value" id="tax">—</span>
           </div>
           <div class="breakdown-row">
-            <span class="b-label">Insurance (0.1%)</span>
+            <span class="b-label">Insurance (0.3% / 12)</span>
             <span class="b-value" id="insurance">—</span>
           </div>
           <div class="breakdown-row" id="hoa-row" style="display:none">
@@ -260,7 +260,7 @@
     <ul>
       <!-- Add new tasks here by copying a <li> block -->
       <li>
-        <input type="checkbox" id="task-1">
+        <input type="checkbox" id="task-1" checked>
         <label for="task-1">Define closing costs</label>
       </li>
       <li>
@@ -268,11 +268,11 @@
         <label for="task-2">Define mortgage cost</label>
       </li>
       <li>
-        <input type="checkbox" id="task-3">
+        <input type="checkbox" id="task-3" checked>
         <label for="task-3">Define tax cost</label>
       </li>
       <li>
-        <input type="checkbox" id="task-4">
+        <input type="checkbox" id="task-4" checked>
         <label for="task-4">Define insurance cost</label>
       </li>
       <li>
@@ -309,9 +309,9 @@
       const values = {
         closing:     price * 0.05,
         downpayment: price * 0.20,
-        mortgage:    price * 0.006,
-        tax:         price * 0.001,
-        insurance:   price * 0.001,
+        mortgage:    (price - price * 0.20) * 0.00616,
+        tax:         price * (0.0118 / 12),
+        insurance:   price * (0.003 / 12),
       };
       values.oneoff  = values.closing + values.downpayment;
       values.monthly = values.mortgage + values.tax + values.insurance + hoa;
