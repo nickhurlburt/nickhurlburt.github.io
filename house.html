@@ -191,11 +191,11 @@
             <span class="b-value" id="mortgage">—</span>
           </div>
           <div class="breakdown-row">
-            <span class="b-label">Tax (1.18% / 12)</span>
+            <span class="b-label">Tax (1.25% / 12)</span>
             <span class="b-value" id="tax">—</span>
           </div>
           <div class="breakdown-row">
-            <span class="b-label">Insurance (0.3% / 12)</span>
+            <span class="b-label">Insurance (0.15% / 12)</span>
             <span class="b-value" id="insurance">—</span>
           </div>
           <div class="breakdown-row" id="hoa-row" style="display:none">
@@ -236,8 +236,8 @@
         closing:     price * 0.05,
         downpayment: price * 0.20,
         mortgage:    (price - price * 0.20) * 0.00616,
-        tax:         price * (0.0118 / 12),
-        insurance:   price * (0.003 / 12),
+        tax:         price * (0.0125 / 12),
+        insurance:   price * (0.0015 / 12),
       };
       values.oneoff  = values.closing + values.downpayment;
       values.monthly = values.mortgage + values.tax + values.insurance + hoa;
